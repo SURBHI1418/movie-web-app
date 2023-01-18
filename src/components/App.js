@@ -1,10 +1,12 @@
 import React from 'react'; 
 import ReactDOM from 'react-dom/client';
 
+
  import {data} from "../data";
 import index from "../index.css"
 import Navbar from './Navbar';
 import MovieCard from "./MovieCard";
+import { addMovies } from '../actions';
 
 
 class App extends React.Component {
@@ -17,15 +19,12 @@ componentDidMount(){
   });
   //make api call
   //dispatch the action
-  store.dispatch({
-    type: 'ADD_MOVIE', 
-    movies: data
-  });
+  store.dispatch(addMovies(data));
   console.log('STATE',this.props.store.getState());
 }
   render(){
 
-  const movies=this.props.store.getState();
+  const {list} = this.props.store.getState();
   console.log('RENDER');
   return (
     <div className="App">
@@ -36,7 +35,7 @@ componentDidMount(){
           <div className="tab">Favourite</div>
         </div>
         <div className="list">
-          {movies.map((movie,index)=>(
+          {list.map((movie,index)=>(
             <MovieCard movie={movie} key={'movies-${index}'}/>
           ))}
         </div>
