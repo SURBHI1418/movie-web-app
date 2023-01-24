@@ -1,15 +1,14 @@
-
 import React from 'react'; 
 import ReactDOM from 'react-dom/client';
 import App from './components/App';
-import {StrictMode} from 'react';
-import {createRoot} from 'react-dom/client';
-import  {configureStore} from '@reduxjs/toolkit';
+// import {StrictMode} from 'react';
+// import {createRoot} from 'react-dom/client';
+// import  {configureStore} from '@reduxjs/toolkit';
 import { createStore } from 'redux';
 import './index.css';
 
-import { combineReducers } from 'redux'
-import movies from './reducers';
+//import { combineReducers } from 'redux';
+import rootReducer  from './reducers';
 
 // const reducer = combineReducers({
 //   // here we will be adding reducers
@@ -18,7 +17,7 @@ import movies from './reducers';
 //   reducer,
 // })
 
-const store=createStore(movies);
+const store=createStore(rootReducer);
 console.log('store',store);
 // console.log('BEFORE_STATE',store.getState());
 // store.dispatch({
