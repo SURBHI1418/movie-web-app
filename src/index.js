@@ -57,21 +57,26 @@ console.log('StoreContext',StoreContext);
 class Provider extends React.Component{
   render(){
     const {store}=this.props;
-  return  <StoreContext.Provider value={store}>
-    {this.props.children}
+  return( 
+   <StoreContext.Provider value={store}>
+{this.props.children}
     </StoreContext.Provider>
-  }
+  );
 }
-// const root = ReactDOM.createRoot(document.getElementById('root'));
- ReactDOM.render(
-  <Provider store={store}>
+
+}
+ const root = ReactDOM.createRoot(document.getElementById('root'));
+//  ReactDOM.render(
+//   <Provider store={store}>
+//  <App />
+//  </Provider>,
+//  document.getElementById('root'));
+
+
+root.render(
+  // <StrictMode>
+    <Provider store={store}>
  <App />
- </Provider>,
- document.getElementById('root'));
-
-
-// root.render(
-//   // <StrictMode>
-//     <App store={store}/>
-//   // </StrictMode>,
-// );
+</Provider>,
+  // </StrictMode>,
+);
